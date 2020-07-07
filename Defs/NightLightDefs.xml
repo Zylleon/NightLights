@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+<!-- Drop downs -->
+  <DesignatorDropdownGroupDef>
+    <defName>ZNLSmall</defName>
+    <label>small night light</label>
+  </DesignatorDropdownGroupDef>
+
+  <DesignatorDropdownGroupDef>
+    <defName>ZNLLarge</defName>
+    <label>large night light</label>
+  </DesignatorDropdownGroupDef>
+  
+  <DesignatorDropdownGroupDef>
+    <defName>ZNLGrand</defName>
+    <label>grand night light</label>
+  </DesignatorDropdownGroupDef>
+
+
+<!-- Bases -->
+  <ThingDef Abstract="True" Name="ZNLBase" ParentName="BuildingBase">
+    <thingClass>Building_Art</thingClass>
+    <minifiedDef>MinifiedThing</minifiedDef>
+	<thingCategories>
+      <li>BuildingsArt</li>
+    </thingCategories>
+	<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <selectable>true</selectable>
+    <fillPercent>0.5</fillPercent>
+    <pathCost>70</pathCost>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <designationCategory>Misc</designationCategory>
+    <rotatable>false</rotatable>
+    <uiIconOffset>(0, 0.03)</uiIconOffset>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+	<tickerType>Rare</tickerType> 
+    <comps>
+	 <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+	  <li Class="CompProperties_Schedule">
+        <startTime>0.8</startTime>
+        <endTime>0.25</endTime>
+        <offMessage>Off during daylight hours</offMessage>
+      </li>
+	  <li Class="CompProperties_Art">
+        <nameMaker>NamerArtSculpture</nameMaker>
+        <descriptionMaker>ArtDescription_Sculpture</descriptionMaker>
+        <canBeEnjoyedAsArt>true</canBeEnjoyedAsArt>
+      </li>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes>
+          <li>Artistic</li>
+        </focusTypes>
+        <offsets>
+          <li Class="FocusStrengthOffset_Quality">
+            <curve>
+              <points>
+                <li>(0,0.12)</li> <!-- awful -->
+                <li>(1,0.16)</li> <!-- poor -->
+                <li>(2,0.20)</li> <!-- normal -->
+                <li>(3,0.22)</li> <!-- good -->
+                <li>(4,0.24)</li> <!-- excellent -->
+                <li>(5,0.26)</li> <!-- masterwork -->
+                <li>(6,0.28)</li> <!-- legendary -->
+              </points>
+            </curve>
+          </li>
+        </offsets>
+      </li>
+    </comps>
+	<inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <tradeTags>
+      <li>Art</li>
+    </tradeTags>
+    <researchPrerequisites>
+      <li>ColoredLights</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+
+  <ThingDef Abstract="True" ParentName="ZNLBase" Name="ZNLSmallBase">
+    <label>small night light</label>
+    <description>A small night light.</description>
+	<designatorDropdown>ZNLSmall</designatorDropdown>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>Things/Building/Art/SculptureSmall</texPath>
+    </graphicData>
+	<comps>
+	  <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>10</basePowerConsumption>
+      </li>
+	</comps>
+    <statBases>
+      <MaxHitPoints>90</MaxHitPoints>
+      <Mass>3</Mass>
+      <Beauty>50</Beauty>
+      <WorkToBuild>6000</WorkToBuild>
+    </statBases>
+	<costList>
+      <Steel>60</Steel>
+    </costList>
+  </ThingDef>
+  
+  <ThingDef Abstract="True" ParentName="ZNLBase" Name="ZNLLargeBase">
+    <label>large night light</label>
+    <description>A large night light.</description>
+	<designatorDropdown>ZNLLarge</designatorDropdown>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>Things/Building/Art/SculptureLarge</texPath>
+	  <drawSize>(3,3)</drawSize>
+    </graphicData>
+	<comps>
+	  <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>15</basePowerConsumption>
+      </li>
+	</comps>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Mass>7</Mass>
+      <Beauty>100</Beauty>
+      <WorkToBuild>10000</WorkToBuild>
+    </statBases>
+    <costList>
+      <Steel>120</Steel>
+    </costList>
+  </ThingDef>
+  
+  <ThingDef Abstract="True" ParentName="ZNLBase" Name="ZNLGrandBase">
+    <label>grand night light</label>
+    <description>A grand night light.</description>
+	<designatorDropdown>ZNLGrand</designatorDropdown>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>Things/Building/Art/SculptureGrand</texPath>
+	  <drawSize>(4,4)</drawSize>
+    </graphicData>
+	<size>(2,2)</size>
+	<comps>
+	  <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>35</basePowerConsumption>
+      </li>
+	</comps>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Mass>28</Mass>
+      <Beauty>400</Beauty>
+      <WorkToBuild>32000</WorkToBuild>
+    </statBases>
+    <costList>
+      <Steel>350</Steel>
+	  <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+  </ThingDef>
+ 
+  
+<!-- small lights -->
+ 
+  
+<ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Red</defName>
+    <label>small night light (red)</label>
+    <description>A red night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(255,220,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,0,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+   <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Orange</defName>
+    <label>small night light (orange)</label>
+    <description>A orange night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(255,235,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,100,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+ <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Yellow</defName>
+    <label>small night light (yellow)</label>
+    <description>A yellow night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(255,255,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,200,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Green</defName>
+    <label>small night light (green)</label>
+    <description>A green night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(220,255,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(0,200,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Teal</defName>
+    <label>small night light (teal)</label>
+    <description>A teal night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(220,255,235)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(50,200,150,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+   
+ <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Cyan</defName>
+    <label>small night light (cyan)</label>
+    <description>A cyan night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(220,255,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(0,200,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Blue</defName>
+    <label>small night light (blue)</label>
+    <description>A blue night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(220,220,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(0,0,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  
+  <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Purple</defName>
+    <label>small night light (purple)</label>
+    <description>A purple night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(255,220,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,0,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_Pink</defName>
+    <label>small night light (pink)</label>
+    <description>A pink night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(255,220,235)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,0,100,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="ZNLSmallBase">
+    <defName>ZNLSmall_White</defName>
+    <label>small night light (white)</label>
+    <description>A white night light.</description>
+    <designatorDropdown>ZNLSmall</designatorDropdown>
+	<graphicData>
+      <color>(255,255,240)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(180,180,170,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  <!-- large lights -->
+  <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Red</defName>
+    <label>large night light (red)</label>
+    <description>A red night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(255,220,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,0,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+   <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Orange</defName>
+    <label>large night light (orange)</label>
+    <description>A orange night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(255,235,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,100,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+ <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Yellow</defName>
+    <label>large night light (yellow)</label>
+    <description>A yellow night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(255,255,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,200,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Green</defName>
+    <label>large night light (green)</label>
+    <description>A green night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(220,255,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(0,200,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+     
+  <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Teal</defName>
+    <label>large night light (teal)</label>
+    <description>A teal night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(220,255,235)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(50,200,150,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+   
+ <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Cyan</defName>
+    <label>large night light (cyan)</label>
+    <description>A cyan night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(220,255,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(0,200,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Blue</defName>
+    <label>large night light (blue)</label>
+    <description>A blue night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(220,220,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(0,0,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  
+  <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Purple</defName>
+    <label>large night light (purple)</label>
+    <description>A purple night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(255,220,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,0,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_Pink</defName>
+    <label>large night light (pink)</label>
+    <description>A pink night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(255,220,235)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(200,0,100,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="ZNLLargeBase">
+    <defName>ZNLLarge_White</defName>
+    <label>large night light (white)</label>
+    <description>A white night light.</description>
+    <designatorDropdown>ZNLLarge</designatorDropdown>
+	<graphicData>
+      <color>(255,255,240)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(180,180,170,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  
+  <!-- grand lights -->
+  <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Red</defName>
+    <label>grand night light (red)</label>
+    <description>A red night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(255,220,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(200,0,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+   <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Orange</defName>
+    <label>grand night light (orange)</label>
+    <description>A orange night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(255,235,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(200,100,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+ <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Yellow</defName>
+    <label>grand night light (yellow)</label>
+    <description>A yellow night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(255,255,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(200,200,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Green</defName>
+    <label>grand night light (green)</label>
+    <description>A green night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(220,255,220)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(0,200,0,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+     
+  <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Teal</defName>
+    <label>grand night light (teal)</label>
+    <description>A teal night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(220,255,235)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(50,200,150,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+   
+ <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Cyan</defName>
+    <label>grand night light (cyan)</label>
+    <description>A cyan night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(220,255,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(0,200,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Blue</defName>
+    <label>grand night light (blue)</label>
+    <description>A blue night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(220,220,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(0,0,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  
+  <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Purple</defName>
+    <label>grand night light (purple)</label>
+    <description>A purple night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(255,220,255)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(200,0,200,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_Pink</defName>
+    <label>grand night light (pink)</label>
+    <description>A pink night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(255,220,235)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(200,0,100,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="ZNLGrandBase">
+    <defName>ZNLGrand_White</defName>
+    <label>grand night light (white)</label>
+    <description>A white night light.</description>
+    <designatorDropdown>ZNLGrand</designatorDropdown>
+	<graphicData>
+      <color>(255,255,240)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(180,180,170,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+  
+
+  
+</Defs>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+	<name>Night Lights</name>
+	<author>Zylle</author>	
+	<supportedVersions>
+		<li>1.1</li>
+	</supportedVersions>
+	<packageId>zylle.NightLights</packageId>
+	<description>
+Colorful sculptures that light up at night! Requires "colored lights" research to build.
+
+Night lights use sculpture graphics! If you have extra modded sculpture graphics, night lights will appear in those shapes too!
+
+
+Discord: https://discord.gg/4EFv76C
+ko-fi: https://ko-fi.com/zylleon
+
+</description>
+</ModMetaData>
+
